@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Calculator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<nav>
+<a href="index.html">Home</a>
+<a href="schedule.html">Schedule</a>
+<a href="contact.html">Contact</a>
+<a href="myworks.html">My Works</a>
+</nav>
+</header>
+
+<div class="container">
+
+<div class="left">
+<img src="images/profile.jpeg" class="profile">
+
+<h3>Information Technology Student</h3>
+
+<p>Email: <a href="mailto:lbin0006@stu.kau.edu.sa">lbin0006@stu.kau.edu.sa</a></p>
+<p>Phone: <a href="tel:+966540902076">+966540902076</a></p>
+
+<h3>Social Media</h3>
+<a href="#">🐦 X</a><br>
+<a href="#">💼 LinkedIn</a>
+</div>
+
+<div class="right">
+
+<h1>Calculator</h1>
+
+<div class="about-box">
+
+<input type="number" id="num1" placeholder="First number">
+<br><br>
+
+<input type="number" id="num2" placeholder="Second number">
+<br><br>
+
+<button onclick="calculate('+')">+</button>
+<button onclick="calculate('-')">-</button>
+<button onclick="calculate('*')">*</button>
+<button onclick="calculate('/')">/</button>
+
+<h3 id="result"></h3>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+<p>© 2026 Lamia Bin Mahfouz</p>
+</footer>
+
+<script>
+function calculate(op) {
+    let n1 = parseFloat(document.getElementById("num1").value);
+    let n2 = parseFloat(document.getElementById("num2").value);
+
+    if (isNaN(n1) || isNaN(n2)) {
+        document.getElementById("result").innerText = "Enter numbers!";
+        return;
+    }
+
+    let res;
+
+    if (op === '+') res = n1 + n2;
+    if (op === '-') res = n1 - n2;
+    if (op === '*') res = n1 * n2;
+    if (op === '/') res = n1 / n2;
+
+    document.getElementById("result").innerText = "Result: " + res;
+}
+</script>
+
+</body>
+</html>

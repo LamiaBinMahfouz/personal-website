@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Country Search</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<nav>
+<a href="index.html">Home</a>
+<a href="schedule.html">Schedule</a>
+<a href="contact.html">Contact</a>
+<a href="myworks.html">My Works</a>
+</nav>
+</header>
+
+<div class="container">
+
+<div class="left">
+
+<img src="images/profile.jpeg" class="profile">
+
+<h3>Information Technology Student</h3>
+
+<p>Email: <a href="mailto:lbin0006@stu.kau.edu.sa">lbin0006@stu.kau.edu.sa</a></p>
+
+<p>Phone: <a href="tel:+966540902076">+966540902076</a></p>
+
+<h3>Social Media</h3>
+
+<a href="#">🐦 X Account</a><br>
+<a href="#">💼 Linkedin Account</a>
+
+</div>
+
+<div class="right">
+
+<h1>Country Search</h1>
+
+<div class="about-box">
+
+<input type="text" id="search" placeholder="Enter country name">
+<br><br>
+
+<button onclick="getCountry()">Search</button>
+
+<div id="result"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+<p>© 2026 Lamia Bin Mahfouz</p>
+</footer>
+
+<script>
+function getCountry() {
+    let name = document.getElementById("search").value;
+
+     document.getElementById("result").innerHTML = "Loading...";
+    fetch("https://restcountries.com/v3.1/name/" + name)
+    .then(res => res.json())
+    .then(data => {
+
+        let c = data[0];
+
+        document.getElementById("result").innerHTML = `
+            <h2>${c.name.common}</h2>
+            <img src="${c.flags.png}" width="150">
+            <p>Capital: ${c.capital}</p>
+            <p>Region: ${c.region}</p>
+        `;
+    })
+    .catch(() => {
+        document.getElementById("result").innerHTML = "Country not found";
+    });
+}
+</script>
+
+</body>
+</html>
